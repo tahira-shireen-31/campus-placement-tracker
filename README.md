@@ -6,6 +6,10 @@ A full-stack web application built using Java, Spring Boot, MySQL, HTML, CSS and
 
 Campus Placement Tracker allows students to maintain their placement application records in one place. Each student can create an account, log in securely and manage their own applications.
 
+## Application Preview
+
+![Campus Placement Tracker Dashboard](images/dashboard.png)
+
 ## Features
 
 - Student registration and login
