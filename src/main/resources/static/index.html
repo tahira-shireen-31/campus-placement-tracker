@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Placement Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <section id="loginScreen" class="auth-screen">
+
+        <div class="auth-card">
+            <h1>Campus<span>Track</span></h1>
+            <p>Welcome back! Login to manage your placements.</p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Login
+                </button>
+
+                <p id="loginMessage" class="auth-message"></p>
+
+            </form>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a href="#" id="showRegister">Register here</a>
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- REGISTRATION SCREEN -->
+    <section id="registerScreen" class="auth-screen" style="display: none;">
+
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <p>Register to start tracking your placement journey.</p>
+
+            <form id="registerForm">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName"
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="registerEmail"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword"
+                           placeholder="Minimum 8 characters"
+                           minlength="8" required>
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Create Account
+                </button>
+
+                <p id="registerMessage" class="auth-message"></p>
+
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="#" id="showLogin">Login here</a>
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN DASHBOARD -->
+    <div class="app-container" id="dashboard" style="display: none;">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>Campus<span>Track</span></h2>
+                <p>PLACEMENT MANAGEMENT</p>
+            </div>
+
+            <nav>
+                <a href="#" class="active">Dashboard</a>
+                <a href="#applications">Applications</a>
+                <a href="#add-placement">Add Placement</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Campus Placement Tracker</p>
+                <small>Student Workspace</small>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Track and manage your placement journey.</p>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-icon">S</div>
+                    <span id="loggedInName">Student</span>
+                    <button type="button" id="logoutButton"
+                            class="primary-btn">
+                        Logout
+                    </button>
+                </div>
+            </header>
+
+
+            <!-- Statistics -->
+            <section class="stats-container">
+
+                <div class="stat-card">
+                    <p>Total Applications</p>
+                    <h2 id="totalCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Applied</p>
+                    <h2 id="appliedCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Interviews</p>
+                    <h2 id="interviewCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Selected</p>
+                    <h2 id="selectedCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Rejected</p>
+                    <h2 id="rejectedCount">0</h2>
+                </div>
+
+            </section>
+
+
+            <!-- Analytics -->
+            <section class="analytics-container">
+
+                <div class="section-heading">
+                    <h2>Placement Analytics</h2>
+                    <p>Understand your application progress at a glance.</p>
+                </div>
+
+                <div class="analytics-grid">
+
+                    <div class="panel analytics-card">
+                        <h3>Application Status</h3>
+
+                        <div class="chart-container">
+
+                            <div class="chart-bar">
+                                <span>Applied</span>
+                                <div class="bar-background">
+                                    <div id="appliedBar"
+                                         class="bar-fill applied-fill"></div>
+                                </div>
+                                <strong id="appliedPercentage">0%</strong>
+                            </div>
+
+                            <div class="chart-bar">
+                                <span>Interview</span>
+                                <div class="bar-background">
+                                    <div id="interviewBar"
+                                         class="bar-fill interview-fill"></div>
+                                </div>
+                                <strong id="interviewPercentage">0%</strong>
+                            </div>
+
+                            <div class="chart-bar">
+                                <span>Selected</span>
+                                <div class="bar-background">
+                                    <div id="selectedBar"
+                                         class="bar-fill selected-fill"></div>
+                                </div>
+                                <strong id="selectedPercentage">0%</strong>
+                            </div>
+
+                            <div class="chart-bar">
+                                <span>Rejected</span>
+                                <div class="bar-background">
+                                    <div id="rejectedBar"
+                                         class="bar-fill rejected-fill"></div>
+                                </div>
+                                <strong id="rejectedPercentage">0%</strong>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel analytics-card">
+                        <h3>Performance Overview</h3>
+
+                        <div class="performance-item">
+                            <p>Selection Rate</p>
+                            <h2 id="selectionRate">0%</h2>
+                            <small>Selected applications out of total applications</small>
+                        </div>
+
+                        <div class="performance-item">
+                            <p>Interview Rate</p>
+                            <h2 id="interviewRate">0%</h2>
+                            <small>Interview applications out of total applications</small>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Add Placement -->
+            <section class="panel" id="add-placement">
+
+                <div class="section-heading">
+                    <h2>Add New Placement</h2>
+                    <p>Enter your application details below.</p>
+                </div>
+
+                <form id="placementForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="companyName"
+                                   placeholder="e.g. Zoho" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Job Role</label>
+                            <input type="text" id="role"
+                                   placeholder="e.g. Software Developer" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="location"
+                                   placeholder="e.g. Chennai" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Application Date</label>
+                            <input type="date" id="applicationDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Application Status</label>
+                            <select id="status" required>
+                                <option value="Applied">Applied</option>
+                                <option value="Interview">Interview</option>
+                                <option value="Selected">Selected</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="primary-btn">
+                        + Add Placement
+                    </button>
+
+                </form>
+            </section>
+
+
+            <!-- Edit Placement -->
+            <section class="form-container" id="editSection"
+                     style="display: none;">
+
+                <h2>Edit Placement</h2>
+
+                <form id="editPlacementForm">
+
+                    <input type="hidden" id="editId">
+
+                    <label>Company Name</label>
+                    <input type="text" id="editCompanyName" required>
+
+                    <label>Job Role</label>
+                    <input type="text" id="editRole" required>
+
+                    <label>Location</label>
+                    <input type="text" id="editLocation" required>
+
+                    <label>Application Date</label>
+                    <input type="date" id="editApplicationDate" required>
+
+                    <label>Application Status</label>
+                    <select id="editStatus" required>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+
+                    <button type="submit">Save Changes</button>
+                    <button type="button" id="cancelEdit">Cancel</button>
+
+                </form>
+            </section>
+
+
+            <!-- Applications Table -->
+            <section class="panel" id="applications">
+
+                <div class="section-heading">
+                    <h2>My Applications</h2>
+                    <p>View and manage your placement records.</p>
+                </div>
+
+                <div class="table-controls">
+
+                    <input type="text" id="searchInput"
+                           placeholder="Search company...">
+
+                    <select id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="placementTable">
+                            <tr>
+                                <td colspan="7">Loading placements...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
